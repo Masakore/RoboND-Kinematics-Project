@@ -156,9 +156,13 @@ def handle_calculate_IK(req):
 
             r23 = R3_6_num[1,2]
 
-            theta4 = atan2(r33, -r13).evalf()
             theta5 = atan2(sqrt(1 - r23**2), r23).evalf()
-            theta6 = atan2(-r22, r21).evalf()
+            if sin(theta5) < 0:
+            	theta4 = atan2(-r33, r13).evalf()
+            	theta6 = atan2(r22, -r21).evalf()
+            else:
+            	theta4 = atan2(r33, -r13).evalf()
+            	theta6 = atan2(-r22, r21).evalf()
 
             print ('===result of theta calculation====')
             print ('theta1: ', theta1)
