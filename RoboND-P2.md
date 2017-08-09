@@ -187,7 +187,7 @@ For theta1 calculation
 ```
 For theta2 calculation
 
-![theta2](img/theta2_cal.jpg)
+![theta2](img/theta2_cal_figure.jpg)
 ```python
   # 3. calculate theta2
   # dist_J2xy_5xy: distance between the x-y-plane projections of joint2 and joint5(WC)
@@ -210,7 +210,7 @@ For theta2 calculation
 ```
 For theta3 calculation
 
-![theta3](img/theta3_cal.jpg)
+![theta3](img/theta3_cal_figure.jpg)
 ```python
   # 4. calculate theta3
   #law of cosine: i.e. a**2 = b**2 + c**2 - 2bc * cos
@@ -231,6 +231,7 @@ Through above calculation, we can get following representation:
 ![Rotation rep](img/rotation_3to6.png)
 
 Then the rest three theta can be found in the following way.
+For multiple solution issue on theta4 and theta6 depending on theta5, I added if statement as advised so that atan2 can always return a result in one of two possible quadrant(i.e. if there is case both quadrant1 and quadrant3 applicable, always return a value in quadrant1). 
 
 ```python
 
@@ -245,7 +246,18 @@ Then the rest three theta can be found in the following way.
 
   r23 = R3_6_num[1,2]
 
+  theta5 = atan2(sqrt(1 - r23**2), r23).evalf()
+  if sin(theta5) < 0:
+  	theta4 = atan2(-r33, r13).evalf()
+  	theta6 = atan2(r22, -r21).evalf()
+  else:
+  	theta4 = atan2(r33, -r13).evalf()
+  	theta6 = atan2(-r22, r21).evalf()
+
   theta4 = atan2(r33, -r13).evalf()
   theta5 = atan2(sqrt(1 - r23**2), r23).evalf()
   theta6 = atan2(-r22, r21).evalf()
 ```
+#### 4 Result
+Achieved 9 success out of 10 trials!
+![result](img/result.png)
