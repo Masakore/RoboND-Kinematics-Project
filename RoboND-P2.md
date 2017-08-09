@@ -231,7 +231,7 @@ Through above calculation, we can get following representation:
 ![Rotation rep](img/rotation_3to6.png)
 
 Then the rest three theta can be found in the following way.
-For multiple solution issue on theta4 and theta6 depending on theta5, I added if statement as advised so that atan2 can always return a result in one of two possible quadrant(i.e. if there is case both quadrant1 and quadrant3 applicable, always return a value in quadrant1). 
+For multiple solution issue on theta4 and theta6 depending on theta5, I added if statement as advised so that atan2 can always return a result in one of two possible quadrant(i.e. if there is case both quadrant1 and quadrant3 applicable, always return a value in quadrant1).
 
 ```python
 
@@ -260,4 +260,5 @@ For multiple solution issue on theta4 and theta6 depending on theta5, I added if
 ```
 #### 4 Result
 Achieved 9 success out of 10 trials!
+
 ![result](img/result.png)
